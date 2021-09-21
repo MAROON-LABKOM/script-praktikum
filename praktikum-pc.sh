@@ -1,5 +1,5 @@
 # Hello
-sudo apt install figlet
+sudo apt -qq install figlet
 figlet -f slant "MaroonLabkom"
 
 # Update library
