@@ -1,5 +1,5 @@
 # Update library
-pip install --upgrade skimage
+pip install --upgrade scikit-image
 
 # Download sample file
 wget -o boneka.jpg https://docs.google.com/uc?export=download&id=1rGok7TVnZShF6sFNlTgDhZgEdMLlUH6x
