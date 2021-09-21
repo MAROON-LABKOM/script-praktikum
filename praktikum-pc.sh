@@ -14,4 +14,4 @@ wget --quiet -o mobil.jpg https://docs.google.com/uc?export=download&id=1GS5uIT4
 wget --quiet -o sel.tif https://docs.google.com/uc?export=download&id=1EL8RO5wTgFV3MI6K0Pa00ZXg_fKR4VSX
 
 # Selesai
-echo "HAPPY CODING"
+echo "HAPPY CODING <3"
