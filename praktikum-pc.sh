@@ -4,7 +4,7 @@ figlet -f slant "MaroonLabkom"
 
 # Update library
 echo "Menginstall library..."
-pip install --quiet --upgrade scikit-image
+pip install --quiet --disable-pip-version-check --upgrade scikit-image
 
 # Download sample file
 echo "Mendownload file contoh..."
