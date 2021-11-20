@@ -78,7 +78,7 @@
         basemap.addTo(map);
 
         // add bogor polygon
-        const bogorGeojson = await fetch("/assets/geojson/bogor.geojson");
+        const bogorGeojson = await fetch("https://raw.githubusercontent.com/MAROON-LABKOM/script-praktikum/master/gis/bogor.geojson");
         const geojsonBody = await bogorGeojson.json();
         L.geoJson(geojsonBody).addTo(map);
 
