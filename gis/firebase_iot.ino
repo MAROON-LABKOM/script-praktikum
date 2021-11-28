@@ -19,6 +19,8 @@
 
     3.  Buka Tools > Boards > Board Manager, kemudian cari esp8266 dan install board esp8266 (v3.0.2).
 
+    4.  Buka dan pilih Tools > MMU > 16KB cache + 48KB IRAM and 2nd Heap (shared)
+
     Selesai!!!
     ----------
 */
