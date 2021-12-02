@@ -111,9 +111,9 @@ void loop()
     return;
   }
 
-  Firebase.setFloat("kelompok2/suhu", suhu);
-  Firebase.setFloat("kelompok2/kelembaban", kelembaban);
-  Firebase.setString("kelompok2/diperbaharui", waktu_terkini);
+  Firebase.setFloat("GIS/kelompok2/suhu", suhu);
+  Firebase.setFloat("GIS/kelompok2/kelembaban", kelembaban);
+  Firebase.setString("GIS/kelompok2/diperbaharui", waktu_terkini);
 
 
 

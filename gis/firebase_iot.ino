@@ -111,11 +111,11 @@ void loop()
     temp = dht.readTemperature();
 
     // kirim data ke Firebase, ubah angka pada /1/ menjadi nomor kelompok kamu!
-    Firebase.RTDB.setString(&fbdo, "/DHT11/1/lokasi", LOCATION_NAME);
-    Firebase.RTDB.setFloat(&fbdo, "/DHT11/1/lat", latitude);
-    Firebase.RTDB.setFloat(&fbdo, "/DHT11/1/long", longitude);
-    Firebase.RTDB.setFloat(&fbdo, "/DHT11/1/rh", rh);
-    Firebase.RTDB.setFloat(&fbdo, "/DHT11/1/temp", temp);
+    Firebase.RTDB.setString(&fbdo, "/GIS/1/lokasi", LOCATION_NAME);
+    Firebase.RTDB.setFloat(&fbdo, "/GIS/1/lat", latitude);
+    Firebase.RTDB.setFloat(&fbdo, "/GIS/1/long", longitude);
+    Firebase.RTDB.setFloat(&fbdo, "/GIS/1/rh", rh);
+    Firebase.RTDB.setFloat(&fbdo, "/GIS/1/temp", temp);
 
     // tampilkan suhu dan kelembapan udara ke Serial (komputer)
     Serial.print(F("Kelembaban udara: "));
