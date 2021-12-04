@@ -5,18 +5,18 @@ int RXPin = D2;
 int TXPin = D3;
 SoftwareSerial gpsSerial(RXPin, TXPin);
 TinyGPSPlus gps;
-int latitude, longitude;
+float latitude, longitude;
 String lat_str, lng_str;
 
 //WIFI
 #include <ESP8266WiFi.h>
-#define WIFI_SSID "DESKTOP-6IDBF47"
-#define WIFI_PASSWORD "12345678"
+#define WIFI_SSID "DESKTOP-6IDBF47" // ganti dan sesuaikan dengan nama wifi
+#define WIFI_PASSWORD "12345678" // ganti dan sesuaikan dengan password wifi
 
 //FIREBASE
 #include <FirebaseArduino.h>
-#define FIREBASE_HOST "gisiot-default-rtdb.firebaseio.com"
-#define FIREBASE_AUTH "o1sAR4U9cId9QRnF3vdCctICQhs8AVQQr5bS0Pew"
+#define FIREBASE_HOST "gisiot-default-rtdb.firebaseio.com" // ganti dan sesuaikan dengan firebase
+#define FIREBASE_AUTH "o1sAR4U9cId9QRnF3vdCctICQhs8AVQQr5bS0Pew" // ganti dengan key firebase
 
 //DHT11
 #include "DHT.h"
@@ -83,9 +83,9 @@ void loop()
         lat_str = String(latitude , 10);
         longitude = gps.location.lng();
         lng_str = String(longitude , 10);
-        Firebase.setString("kelompok2/latitude", lat_str);
-        Firebase.setString("kelompok2/longitude", lng_str);
       }
+      Firebase.setString("kelompok7/latitude", lat_str);
+      Firebase.setString("kelompok7/longitude", lng_str);
     }
   }
 
@@ -106,14 +106,14 @@ void loop()
 
 
   if (Firebase.failed()) {
-    Serial.print("Gagal mengupdate data suhu");
+    Serial.print("Gagal mendapatkan firebase");
     Serial.println(Firebase.error());
     return;
   }
 
-  Firebase.setFloat("GIS/kelompok2/suhu", suhu);
-  Firebase.setFloat("GIS/kelompok2/kelembaban", kelembaban);
-  Firebase.setString("GIS/kelompok2/diperbaharui", waktu_terkini);
+  Firebase.setFloat("kelompok7/suhu", suhu);
+  Firebase.setFloat("kelompok7/kelembaban", kelembaban);
+  Firebase.setString("kelompok7/diperbaharui", waktu_terkini);
 
 
 
