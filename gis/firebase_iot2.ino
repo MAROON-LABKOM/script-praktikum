@@ -1,3 +1,36 @@
+/* 
+    WEB GIS REALTIME + IOT + FIREBASE
+    ---------------------------------
+    Sebelum menggunakan kode ini, pastikan Anda telah mengikuti langkah-langkah berikut.
+
+    1.  Buka File > Preferences
+        Kemudian tambahkan URL berikut ke kolom Additional Boards Manager URLs.
+        https://arduino.esp8266.com/stable/package_esp8266com_index.json
+
+        Buka Tools > Boards > Board Manager, kemudian cari ESP8266 Module 2.7.4 - NodeMCU 0.9.
+
+    2.  Buka Sketch > Include Library > Manage Libraries...
+        Kemudian cari dan install library di bawah ini. 
+        - DHT_sensor_library
+        - ArduinoJson 5.13.5
+        - NTPClient 3.2.0
+        
+        Jika library tidak ada pada pencarian,
+        Anda bisa download dari link Github.
+        - FirebaseArduino
+        https://github.com/FirebaseExtended/firebase-arduino
+        - TinyGPS++
+         https://github.com/mikalhart/TinyGPSPlus/releases
+        
+    3.  Driver USB to NodeMCU
+        - CH341 : http://www.wch-ic.com/downloads/CH341SER_EXE.html atau 
+        - CP210 : https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers
+
+    Selesai!!!
+    ----------
+*/
+
+
 //GPS
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
@@ -10,16 +43,16 @@ String lat_str, lng_str;
 
 //WIFI
 #include <ESP8266WiFi.h>
-#define WIFI_SSID "DESKTOP-6IDBF47" // ganti dan sesuaikan dengan nama wifi
-#define WIFI_PASSWORD "12345678" // ganti dan sesuaikan dengan password wifi
+#define WIFI_SSID "LABKOM" // ganti dan sesuaikan dengan nama wifi
+#define WIFI_PASSWORD "maroon2018" // ganti dan sesuaikan dengan password wifi
 
 //FIREBASE
 #include <FirebaseArduino.h>
-#define FIREBASE_HOST "gisiot-default-rtdb.firebaseio.com" // ganti dan sesuaikan dengan firebase
-#define FIREBASE_AUTH "o1sAR4U9cId9QRnF3vdCctICQhs8AVQQr5bS0Pew" // ganti dengan key firebase
+#define FIREBASE_HOST "praktikumsig-2b4b1-default-rtdb.asia-southeast1.firebasedatabase.app" // ganti dan sesuaikan dengan firebase
+#define FIREBASE_AUTH "JUug0cVkgi3uav97fPZd3FKnIr9RBrIlABddj9ZN" // ganti dengan key firebase
 
 //DHT11
-#include "DHT.h"
+#include <DHT.h>
 #define DHTPIN D1
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
@@ -54,6 +87,9 @@ void setup() {
 
   //Firebase
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  
+
+  Firebase.setString("Asprak/nama", "Ruang Asprak GIS"); // Ganti sesuai dengan urutan kelompok contoh "Kelompok 1"
 }
 
 void loop()
@@ -84,8 +120,8 @@ void loop()
         longitude = gps.location.lng();
         lng_str = String(longitude , 10);
       }
-      Firebase.setString("kelompok7/latitude", lat_str);
-      Firebase.setString("kelompok7/longitude", lng_str);
+      Firebase.setString("Asprak/latitude", lat_str);
+      Firebase.setString("Asprak/longitude", lng_str);
     }
   }
 
@@ -111,9 +147,9 @@ void loop()
     return;
   }
 
-  Firebase.setFloat("kelompok7/suhu", suhu);
-  Firebase.setFloat("kelompok7/kelembaban", kelembaban);
-  Firebase.setString("kelompok7/diperbaharui", waktu_terkini);
+  Firebase.setFloat("Asprak/suhu", suhu);
+  Firebase.setFloat("Asprak/kelembaban", kelembaban);
+  Firebase.setString("Asprak/diperbaharui", waktu_terkini);
 
 
 
