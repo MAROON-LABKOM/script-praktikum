@@ -1,26 +1,55 @@
+/*
+    WEB GIS REALTIME + IOT + FIREBASE
+    ---------------------------------
+    Sebelum menggunakan kode ini, pastikan Anda telah mengikuti langkah-langkah berikut.
+    1.  Buka File > Preferences
+        Kemudian tambahkan URL berikut ke kolom Additional Boards Manager URLs.
+        https://arduino.esp8266.com/stable/package_esp8266com_index.json
+        Buka Tools > Boards > Board Manager, kemudian cari ESP8266 Module 2.7.4 - NodeMCU 0.9.
+    2.  Buka Sketch > Include Library > Manage Libraries...
+        Kemudian cari dan install library di bawah ini.
+        - DHT_sensor_library
+        - ArduinoJson 5.13.5
+        - NTPClient 3.2.0
+
+        Jika library tidak ada pada pencarian,
+        Anda bisa download dari link Github.
+        - FirebaseArduino
+        https://github.com/FirebaseExtended/firebase-arduino
+        - TinyGPS++
+         https://github.com/mikalhart/TinyGPSPlus/releases
+
+    3.  Driver USB to NodeMCU
+        - CH341 : http://www.wch-ic.com/downloads/CH341SER_EXE.html atau
+        - CP210 : https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers
+    Selesai!!!
+    ----------
+*/
+
+
 //GPS
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
-int RXPin = D2;
-int TXPin = D3;
+int RXPin = D1;
+int TXPin = D2;
 SoftwareSerial gpsSerial(RXPin, TXPin);
 TinyGPSPlus gps;
-int latitude, longitude;
+float latitude, longitude;
 String lat_str, lng_str;
 
 //WIFI
 #include <ESP8266WiFi.h>
-#define WIFI_SSID "DESKTOP-6IDBF47"
-#define WIFI_PASSWORD "12345678"
+#define WIFI_SSID "DESKTOP-6IDBF47" // ganti dan sesuaikan dengan nama wifi
+#define WIFI_PASSWORD "12345678" // ganti dan sesuaikan dengan password wifi
 
 //FIREBASE
 #include <FirebaseArduino.h>
-#define FIREBASE_HOST "gisiot-default-rtdb.firebaseio.com"
-#define FIREBASE_AUTH "o1sAR4U9cId9QRnF3vdCctICQhs8AVQQr5bS0Pew"
+#define FIREBASE_HOST "praktikumsig-2b4b1-default-rtdb.asia-southeast1.firebasedatabase.app" // ganti dan sesuaikan dengan firebase
+#define FIREBASE_AUTH "JUug0cVkgi3uav97fPZd3FKnIr9RBrIlABddj9ZN" // ganti dengan key firebase
 
 //DHT11
-#include "DHT.h"
-#define DHTPIN D1
+#include <DHT.h>
+#define DHTPIN D3
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
 int suhu, kelembaban;
@@ -54,6 +83,10 @@ void setup() {
 
   //Firebase
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+
+  //Sesuaikan Kelompok dengan nomer alat - cth : alat nomer 20 berarti "WEBGIS/Kelompok20/nama" berlaku untuk semuanya yang Firebase.set....
+  Firebase.setString("WEBGIS/Kelompok2/nama", "2 - GISTEAM"); // Sesuaikan Kelompok dengan nomer alat - cth : alat nomer 20 berarti "20 - Kelompok 2"
+  Firebase.setString("WEBGIS/Kelompok2/kelas", "ABCD"); // Sesuaikan Kelompok dengan nomer alat dan Kelas Praktikum Asal
 }
 
 void loop()
@@ -83,9 +116,9 @@ void loop()
         lat_str = String(latitude , 10);
         longitude = gps.location.lng();
         lng_str = String(longitude , 10);
-        Firebase.setString("kelompok2/latitude", lat_str);
-        Firebase.setString("kelompok2/longitude", lng_str);
       }
+      Firebase.setString("WEBGIS/Kelompok2/latitude", lat_str);  //Sesuaikan Kelompok dengan nomer alat - cth : alat nomer 20 berarti "WEBGIS/Kelompok20/nama" berlaku untuk semuanya yang Firebase.set....
+      Firebase.setString("WEBGIS/Kelompok2/longitude", lng_str);   //Sesuaikan Kelompok dengan nomer alat - cth : alat nomer 20 berarti "WEBGIS/Kelompok20/nama" berlaku untuk semuanya yang Firebase.set....
     }
   }
 
@@ -106,16 +139,14 @@ void loop()
 
 
   if (Firebase.failed()) {
-    Serial.print("Gagal mengupdate data suhu");
+    Serial.print("Gagal mendapatkan firebase");
     Serial.println(Firebase.error());
     return;
   }
 
-  Firebase.setFloat("GIS/kelompok2/suhu", suhu);
-  Firebase.setFloat("GIS/kelompok2/kelembaban", kelembaban);
-  Firebase.setString("GIS/kelompok2/diperbaharui", waktu_terkini);
-
-
+  Firebase.setFloat("WEBGIS/Kelompok2/suhu", suhu);   //Sesuaikan Kelompok dengan nomer alat - cth : alat nomer 20 berarti "WEBGIS/Kelompok20/nama" berlaku untuk semuanya yang Firebase.set....
+  Firebase.setFloat("WEBGIS/Kelompok2/kelembaban", kelembaban);   //Sesuaikan Kelompok dengan nomer alat - cth : alat nomer 20 berarti "WEBGIS/Kelompok20/nama" berlaku untuk semuanya yang Firebase.set....
+  Firebase.setString("WEBGIS/Kelompok2/diperbaharui", waktu_terkini);   //Sesuaikan Kelompok dengan nomer alat - cth : alat nomer 20 berarti "WEBGIS/Kelompok20/nama" berlaku untuk semuanya yang Firebase.set....
 
   delay(2000);
 }
