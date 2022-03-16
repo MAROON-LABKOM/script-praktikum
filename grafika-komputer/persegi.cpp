@@ -30,7 +30,7 @@ int main(int argc, char **argv)
   glutInit(&argc, argv);
   glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
-  glutCreateWindow("Grafkom LABKOM: Lingkaran");
+  glutCreateWindow("Grafkom LABKOM: Persegi");
   glutReshapeFunc(window);
   glutDisplayFunc(draw);
   glutMainLoop();
