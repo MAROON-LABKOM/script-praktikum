@@ -1,24 +1,41 @@
+/*
+  Praktikum Grafika Komputer
+  Laboratorium Komputer
+  Universitas Pakuan
+  2022
+*/
+
 #include <gl/freeglut.h>
+#define WINDOW_WIDTH 360
+#define WINDOW_HEIGHT 360
+
 void draw()
 {
-  glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT);
+
   glBegin(GL_TRIANGLES);
-  glColor3f(1.0f, 0.0f, 0.0f);
-  glVertex3f(-0.10, -0.10, 0.00);
-  glColor3f(0.0f, 1.0f, 0.0f);
-  glVertex3f(0.10, -0.10, 0.00);
-  glColor3f(0.0f, 0.0f, 1.0f);
-  glVertex3f(0.00, 0.10, 0.00);
+  glColor3f(1.0f, 1.0f, 1.0f);
+  glVertex2f(-0.18f, -0.18f);
+  glVertex2f(0.18f, -0.18f);
+  glVertex2f(0.0f, 0.18f);
   glEnd();
+
   glFlush();
 }
+
+void window(int width, int height)
+{
+  glutReshapeWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
+}
+
 int main(int argc, char **argv)
 {
   glutInit(&argc, argv);
-  glutInitWindowSize(640, 480);
+  glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
   glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
-  glutCreateWindow("Segitiga");
+  glutCreateWindow("Grafkom LABKOM: Segitiga");
+  glutReshapeFunc(window);
   glutDisplayFunc(draw);
   glutMainLoop();
   return 0;
