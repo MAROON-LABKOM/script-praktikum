@@ -78,6 +78,8 @@ int main()
   root->right = new Node(9);
   root->left->left = new Node(5);
   root->left->right = new Node(6);
+  root->left->right->left = new Node(2);
+  root->left->right->right = new Node(3);
 
   print("", root, false);
 
