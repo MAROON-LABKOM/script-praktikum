@@ -1,0 +1,11 @@
+{
+  "name": "gps-neo-6m",
+  "author": "Smawu Bay",
+  "pins": [
+    "VCC",
+    "GND",
+    "RX",
+    "TX"
+  ],
+  "controls": []
+}
