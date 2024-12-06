@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "author": "Smawu Bay",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -48, "left": -14.36, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 31.8, "left": 152.7, "attrs": {} },
+    { "type": "chip-gps-neo-6m", "id": "chip1", "top": 202.62, "left": -33.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "chip1:VCC", "red", [ "v112.5", "h-177.3", "v-48", "h19.2" ] ],
+    [ "dht1:SDA", "esp:4", "green", [ "v16.5", "h-62", "v-9.6" ] ],
+    [ "dht1:GND", "chip1:GND", "black", [ "v122.1", "h-225.3" ] ],
+    [ "chip1:VCC", "esp:5V", "red", [ "h-19.2", "v-28.8" ] ],
+    [ "chip1:GND", "esp:GND.1", "black", [ "h-38.4", "v-96", "h0", "v-28.8" ] ],
+    [ "chip1:TX", "esp:RX", "magenta", [ "h49.81", "v-19.2" ] ],
+    [ "chip1:RX", "esp:TX", "yellow", [ "v0", "h59.41", "v-230.4" ] ]
+  ],
+  "dependencies": {}
+}

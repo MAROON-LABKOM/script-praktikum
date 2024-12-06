@@ -1,0 +1,12 @@
+# Wokwi Library List
+# See https://docs.wokwi.com/guides/libraries
+
+# Automatically added based on includes:
+Adafruit GFX Library
+DHT sensor library
+
+TinyGPSPlus
+ThingSpeak
+Adafruit Unified Sensor
+Adafruit BusIO
+Adafruit SSD1306
