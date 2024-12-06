@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monitoring Suhu dan Kelembaban pada Suatu Wilayah</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navigation">
+      <h1 class="logo">SIG Pertemuan 10</h1>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="content">
+        <!-- Map -->
+        <div class="map" id="map"></div>
+
+        <!-- Chart ThingSpeak -->
+        <div class="chart">
+          <!-- Chart 1 -->
+          <iframe
+            width="450"
+            height="260"
+            style="border: 1px solid #cccccc"
+            src="https://thingspeak.com/channels/2776561/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+          ></iframe>
+
+          <!-- Chart 2 -->
+          <iframe
+            width="450"
+            height="260"
+            style="border: 1px solid #cccccc"
+            src="https://thingspeak.com/channels/2776561/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+          ></iframe>
+        </div>
+      </div>
+
+      <aside>
+        <div class="location">
+          <div class="coordinate">
+            <h3>Coordinates</h3>
+            <h4 id="coodinate"></h4>
+          </div>
+
+          <div class="type">
+            <h3>Type</h3>
+            <h4 id="type"></h4>
+          </div>
+
+          <div class="place">
+            <h3>Place</h3>
+            <h4 id="place"></h4>
+          </div>
+        </div>
+
+        <div class="temperature">
+          <div class="block-title">Pemantauan Suhu</div>
+
+          <div class="value" id="field3"></div>
+
+          <div class="symbol">°C</div>
+        </div>
+
+        <div class="humidity">
+          <div class="block-title">Pemantauan Suhu</div>
+
+          <div class="value" id="field4"></div>
+          <div class="symbol">%</div>
+        </div>
+      </aside>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

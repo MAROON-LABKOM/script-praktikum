@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,600;1,14..32,600&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ECECEC;
+}
+
+.navigation {
+    width: 100vw;
+    padding-block: 16px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    background: linear-gradient(91deg, #1d9408 -1.89%, #40AA44 103.18%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Montserrat;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.main-content {
+    display: flex;
+    padding-block: 30px;
+    padding-inline: 70px;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+}
+
+.map {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #039000;
+    height: 462px;
+    box-shadow: 0px 0px 40px 0px rgba(160, 255, 102, 0.60);
+}
+
+.map img {
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.chart {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.chart iframe {
+    border-radius: 10px;
+    border: 1px solid #039000;
+    box-shadow: 0px 0px 10px 0px rgba(160, 255, 102, 0.60);
+    width: 100%;
+}
+
+aside {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.location,
+.temperature,
+.humidity {
+    border-radius: 10px;
+    border: 1px solid #039000;
+    box-shadow: 0px 0px 10px 0px rgba(160, 255, 102, 0.60);
+    background-color: white;
+}
+
+.location {
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.location h3 {
+    color: #1C700E;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 4px;
+}
+
+.location h4 {
+    color: #858585;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.temperature,
+.humidity {
+    padding: 20px 0px 0px 0px;
+    position: relative;
+}
+
+.temperature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.block-title {
+    color: #1C700E;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.value {
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 0px 0px 7px 7px;
+    background: #287E1A;
+    width: 100%;
+    min-height: 80px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.symbol {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    top: 60px;
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    z-index: 100;
+}
