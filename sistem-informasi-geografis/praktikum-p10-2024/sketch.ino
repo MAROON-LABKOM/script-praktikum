@@ -120,8 +120,8 @@ void loop() {
 
     ThingSpeak.setField(1, lat_data);  //field latitude
     ThingSpeak.setField(2, lng_data);
-    ThingSpeak.setField(3, temp);  //field humidity
-    ThingSpeak.setField(4, hum); //field temperature
+    ThingSpeak.setField(3, hum);  //field humidity
+    ThingSpeak.setField(4, temp); //field temperature
     // write to the ThingSpeak channel
     int x = ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
     if (x == 200) {
