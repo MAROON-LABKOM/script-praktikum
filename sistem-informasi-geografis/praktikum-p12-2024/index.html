@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Home | Monitoring Suhu dan Kelembaban Kota Bogor</title>
+  </head>
+  <body>
+    <div class="container">
+      <aside id="sidebar">
+        <div class="sidebar-head">
+          <div class="sidebar-title">
+            <button id="toggle-btn">☰</button>
+            <h2>My WebGIS</h2>
+          </div>
+          <div class="sidebar-subtitle">
+            <p>Sistem Monitoring Suhu dan Kelembaban di Kota Bogor</p>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <a href="index.html">🏠<span class="nav-labels">Home</span></a>
+          </li>
+          <li>
+            <a href="maps.html">🗺️<span class="nav-labels">Maps</span></a>
+          </li>
+          <li>
+            <a href="about.html">👤<span class="nav-labels">About</span></a>
+          </li>
+        </ul>
+      </aside>
+      <main>
+        <section class="hero">
+          <div class="overlay"></div>
+          <div class="hero-content">
+            <h1>Monitoring Suhu dan Kelembaban</h1>
+            <p class="subtitle">
+              Solusi berbasis teknologi untuk Kota Bogor menggunakan QGIS.
+            </p>
+            <a href="maps.html" class="cta-button">Lihat Peta</a>
+          </div>
+        </section>
+        <section class="sensors">
+          <h2>Sensor yang Digunakan</h2>
+          <div class="sensor-list">
+            <div class="sensor-item">
+              <img
+                src="https://tokoteknologi.co.id/resources/image/18/c1/f.jpg"
+                alt="DHT22"
+                class="sensor-icon"
+              />
+              <h3>DHT22</h3>
+              <p>Sensor untuk memantau suhu dan kelembaban secara akurat.</p>
+            </div>
+            <div class="sensor-item">
+              <img
+                src="https://tokoteknologi.co.id/resources/image/18/bf/6.jpg"
+                alt="GPS NEO 6M"
+                class="sensor-icon"
+              />
+              <h3>GPS NEO 6M</h3>
+              <p>Sensor GPS untuk menentukan lokasi dengan presisi tinggi.</p>
+            </div>
+            <div class="sensor-item">
+              <img
+                src="https://raharja.ac.id/wp-content/uploads/2021/11/ESP32-Module.png"
+                alt="ESP32"
+                class="sensor-icon"
+              />
+              <h3>ESP32</h3>
+              <p>Microcontroller untuk pengelolaan data dan komunikasi IoT.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Titik Pemantauan -->
+        <section class="monitoring-points">
+          <h2>Titik Pemantauan</h2>
+          <div class="monitoring-cards">
+            <div class="card">
+              <img
+                src="/images/image1.png"
+                alt="ESP32"
+                class="stasiun-thumbnail"
+              />
+              <h3>Titik 1: SP-Cikeas</h3>
+              <div class="point-contents">
+                <div class="point-coordinate">
+                  <p>Latitide: -6.3287424</p>
+                  <p>Longitude: 106.4237842</p>
+                </div>
+                <a class="gotomaps" href="#" id="go-to-maps1">🗺️</a>
+              </div>
+            </div>
+            <div class="card">
+              <img
+                src="/images/image2.png"
+                alt="ESP32"
+                class="stasiun-thumbnail"
+              />
+              <h3>Titik 2: SP-Cikuas</h3>
+              <div class="point-contents">
+                <div class="point-coordinate">
+                  <p>Latitide: -6.3287424</p>
+                  <p>Longitude: 106.4237842</p>
+                </div>
+                <a class="gotomaps" href="#" id="go-to-maps1">🗺️</a>
+              </div>
+            </div>
+            <div class="card">
+              <img
+                src="/images/image3.png"
+                alt="ESP32"
+                class="stasiun-thumbnail"
+              />
+              <h3>Titik 3: SP-Cikaos</h3>
+              <div class="point-contents">
+                <div class="point-coordinate">
+                  <p>Latitide: -6.3287424</p>
+                  <p>Longitude: 106.4237842</p>
+                </div>
+                <a class="gotomaps" href="#" id="go-to-maps1">🗺️</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Lokasi dan Google Maps -->
+        <section class="location">
+          <h2>Lokasi Kantor Pusat</h2>
+          <div class="location-content">
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.381716630867!2d106.80979187393912!3d-6.599393064509932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5d97d3764c3%3A0xd56ba6305181755c!2sUniversitas%20Pakuan!5e0!3m2!1sid!2sid!4v1734570592136!5m2!1sid!2sid"
+                width="100%"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div class="contact-info">
+              <div>
+                <h3>Universitas Pakuan</h3>
+                <p>
+                  <strong>Alamat:</strong>Jl. Pakuan, RT.02/RW.06, Tegallega,
+                  Kecamatan Bogor Tengah, Kota Bogor, Jawa Barat 16129
+                </p>
+                <p><strong>Email:</strong>rektorat@unpak.ac.id</p>
+                <p><strong>Telepon:</strong> +62-811-1234-5678</p>
+              </div>
+
+              <div>
+                <a
+                  class="hub-button"
+                  target="_blank"
+                  href="mailto:email@example.com?subject=Tanya%20Stasium%20Pemantauan&body=Halo%20saya%20<Nama%20Anda>,%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20<deskripsikan%20pertanyaan%20anda>"
+                  >Hubungi via Email</a
+                >
+                <br />
+                <a
+                  class="hub-button"
+                  target="_blank"
+                  href="https://wa.me/628551111980?text=Halo%20saya%20<Nama%20Anda>,%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20<deskripsikan%20pertanyaan%20anda>"
+                  >Hubungi via Whatsapp</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+          <p>&copy; 2024 Monitoring Suhu dan Kelembaban | Kota Bogor</p>
+          <p>Dibuat dengan dedikasi untuk lingkungan</p>
+        </footer>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

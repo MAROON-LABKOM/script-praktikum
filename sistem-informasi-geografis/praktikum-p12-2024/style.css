@@ -1,0 +1,553 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,600;1,14..32,600&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Quicksand", serif;
+}
+
+.container {
+    display: flex;
+}
+
+#sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    transition: width 0.3s;
+    overflow: hidden;
+    transition: width 0.3s;
+}
+
+#sidebar.collapsed {
+    width: 60px;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sidebar ul li {
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+#sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 10px;
+    border-radius: 10px;
+}
+
+#sidebar ul li a:hover,
+#sidebar ul li a.active {
+    background-color: #575757;
+}
+
+#sidebar.collapsed ul li a .nav-labels,
+#sidebar.collapsed .sidebar-subtitle,
+#sidebar.collapsed .sidebar-title h2 {
+    display: none;
+}
+
+#sidebar.collapsed ul li a {
+    justify-content: center;
+}
+
+#toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.sidebar-head {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin: 0;
+}
+
+.sidebar-title {
+    display: flex;
+    transition: all 1s ease;
+}
+
+.sidebar-subtitle {
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: all 1s ease;
+}
+
+main {
+    margin-left: 250px;
+    transition: margin-left 0.3s;
+    width: 100%;
+}
+
+main.collapsed {
+    margin-left: 60px;
+}
+
+/* Styling Hero dengan Background Gambar */
+.hero {
+    position: relative;
+    background: url('https://erfan1977.wordpress.com/wp-content/uploads/2012/12/citra-martapura.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: 800;
+}
+
+.cta-button:hover {
+    background: #0056b3;
+}
+
+/* Styling untuk section features */
+.features {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    padding: 60px 20px;
+    background: #f8f9fa;
+}
+
+.feature-item {
+    text-align: center;
+    max-width: 300px;
+}
+
+.feature-item .feature-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    border: 3px solid #007bff;
+}
+
+.feature-item h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.profile {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Styling untuk Section Sensor yang Digunakan */
+.sensors {
+    background: #f8f9fa;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.sensors h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.sensor-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sensor-item {
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.sensor-item .sensor-icon {
+    width: 200px;
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.sensor-item img {
+    object-fit: cover;
+}
+
+.sensor-item h3 {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.sensor-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Styling Section Titik Pemantauan */
+.monitoring-points {
+    background: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.monitoring-points h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.monitoring-cards {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.stasiun-thumbnail {
+    width: 295px;
+    height: 200px;
+    margin-right: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.card .point-contents {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gotomaps {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: large;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.card p {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+    align-self: flex-start;
+}
+
+
+/* Styling untuk Lokasi dan Google Maps */
+.location {
+    background: #e9ecef;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.location-content {
+    display: flex;
+    gap: 15px;
+}
+
+.location h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.map-container iframe {
+    border-radius: 10px;
+}
+
+.map-container {
+    margin-bottom: 20px;
+    width: 70%;
+    border-radius: 10px;
+    border: solid 2px #696969;
+}
+
+.contact-info {
+    background-color: white;
+    padding: 4px 20px;
+    border-radius: 10px;
+    height: fit-content;
+    width: 30%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-info h3 {
+    padding: 30px 10px;
+    background-color: indigo;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+    margin: -4px -20px;
+    font-size: 24px;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    color: #555;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.hub-button {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.hub-button:hover {
+    background: #0056b3;
+}
+
+/* Footer Styling */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+.webgis-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.webgis-container main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.webgis-content {
+    flex: 1;
+    background: #e5e5e5;
+    padding: 20px;
+    transition: flex 0.3s ease;
+}
+
+.statitics {
+    background: #fff;
+    border-top: 1px solid #ddd;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: block;
+    height: auto;
+    padding-inline: 30px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.statitics.collapsed {
+    background-color: #868686;
+    height: 100px;
+}
+
+.statitics.collapsed #toggle-statistics {
+    background-color: #000;
+}
+
+.cards-webgis {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cards-webgis .card {
+    background: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-statistic-section {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+#toggle-statistics {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 10px 0;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#toggle-statistics:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#toggle-statistics:active {
+    transform: scale(0.95);
+}
+
+/* Styling untuk Section About Us */
+
+.about-container{
+    display: flex;
+    min-height: 100vh;
+    background-color: #e5e5e5;
+}
+
+.about-content {
+    margin: 40px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.about-content ul.profile {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.profile li {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.profile li img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid #007bff;
+}
+
+.profile li h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.profile li p {
+    font-size: 1rem;
+    color: #555;
+}

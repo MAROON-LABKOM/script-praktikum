@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Maps | Monitoring Suhu dan Kelembaban Kota Bogor</title>
+  </head>
+  <body>
+    <div class="webgis-container">
+      <aside id="sidebar">
+        <div class="sidebar-head">
+          <div class="sidebar-title">
+            <button id="toggle-btn">☰</button>
+            <h2>My WebGIS</h2>
+          </div>
+          <div class="sidebar-subtitle">
+            <p>Sistem Monitoring Suhu dan Kelembaban di Kota Bogor</p>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <a href="index.html">🏠<span class="nav-labels">Home</span></a>
+          </li>
+          <li>
+            <a href="maps.html">🗺️<span class="nav-labels">Maps</span></a>
+          </li>
+          <li>
+            <a href="about.html">👤<span class="nav-labels">About</span></a>
+          </li>
+        </ul>
+      </aside>
+      <main>
+        <!-- Bagian Maps -->
+        <section class="webgis-content"></section>
+
+        <!-- Bagian Statistik -->
+        <section class="statitics collapsed" id="statistics-section">
+          <div class="toggle-statistic-section"><button id="toggle-statistics">Lihat Statistik</button></div>
+          <div class="cards-webgis">
+            <div class="card">Card 1</div>
+            <div class="card">Card 2</div>
+            <div class="card">Card 3</div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
