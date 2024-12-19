@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="stylesheet" href="style.css" />
     <title>Maps | Monitoring Suhu dan Kelembaban Kota Bogor</title>
   </head>
@@ -32,20 +38,180 @@
       </aside>
       <main>
         <!-- Bagian Maps -->
-        <section class="webgis-content"></section>
+        <section class="webgis-content" id="map"></section>
 
         <!-- Bagian Statistik -->
         <section class="statitics collapsed" id="statistics-section">
-          <div class="toggle-statistic-section"><button id="toggle-statistics">Lihat Statistik</button></div>
+          <div class="toggle-statistic-section">
+            <button id="toggle-statistics"></button>
+          </div>
+
+          <div class="clock">
+            <iframe
+              src="https://free.timeanddate.com/clock/i9onlcfk/n108/tlid38/fn16/fs16/ftb/pt10/pb10/tt0"
+              frameborder="0"
+              width="290"
+              height="39"
+            ></iframe>
+          </div>
+
+          <div class="location-monitor">
+            <div class="gatau">
+              <div class="coordinate">
+                <h4>Koordinat</h4>
+                <p id="coordinate1">data koordinat</p>
+              </div>
+              <div class="type">
+                <p><strong>Type</strong></p>
+                <p id="type1">data type</p>
+              </div>
+            </div>
+            <div class="address">
+              <p><strong>Address</strong></p>
+              <p id="address1">data address</p>
+            </div>
+          </div>
+
           <div class="cards-webgis">
-            <div class="card">Card 1</div>
-            <div class="card">Card 2</div>
-            <div class="card">Card 3</div>
+            <div class="card">
+              <h2>Titik 1</h2>
+              <div class="temperature">
+                <div class="block-title">Pemantauan Suhu</div>
+                <div class="value" id="suhu-titik1"></div>
+              </div>
+              <div class="humidity">
+                <div class="block-title">Pemantauan Kelembaban</div>
+                <div class="value" id="kelembaban-titik1"></div>
+              </div>
+            </div>
+
+            <div class="graphic-card">
+              <h2>Grafik Suhu Titik 1</h2>
+              <iframe
+                width="450"
+                height="260"
+                style="border: 1px solid #cccccc"
+                src="https://thingspeak.com/channels/2787496/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+              ></iframe>
+            </div>
+            <div class="graphic-card">
+              <h2>Grafik Kelembaban Titik 1</h2>
+              <iframe
+                width="450"
+                height="260"
+                style="border: 1px solid #cccccc"
+                src="https://thingspeak.com/channels/2787496/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="location-monitor">
+            <div class="gatau">
+              <div class="coordinate">
+                <h4>Koordinat</h4>
+                <p id="coordinate2">data koordinat</p>
+              </div>
+              <div class="type">
+                <p><strong>Type</strong></p>
+                <p id="type2">data type</p>
+              </div>
+            </div>
+            <div class="address">
+              <p><strong>Address</strong></p>
+              <p id="address2">data address</p>
+            </div>
+          </div>
+
+          <div class="cards-webgis">
+            <div class="card">
+              <h2>Titik 2</h2>
+              <div class="temperature">
+                <div class="block-title">Pemantauan Suhu</div>
+                <div class="value" id="suhu-titik2"></div>
+              </div>
+              <div class="humidity">
+                <div class="block-title">Pemantauan Kelembaban</div>
+                <div class="value" id="kelembaban-titik2"></div>
+              </div>
+            </div>
+
+            <div class="graphic-card">
+              <h2>Grafik Suhu Titik 1</h2>
+              <iframe
+                width="450"
+                height="260"
+                style="border: 1px solid #cccccc"
+                src="https://thingspeak.com/channels/2789709/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+              ></iframe>
+            </div>
+            <div class="graphic-card">
+              <h2>Grafik Kelembaban Titik 2</h2>
+              <iframe
+                width="450"
+                height="260"
+                style="border: 1px solid #cccccc"
+                src="https://thingspeak.com/channels/2789709/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="location-monitor">
+            <div class="gatau">
+              <div class="coordinate">
+                <h4>Koordinat</h4>
+                <p id="coordinate3">data koordinat</p>
+              </div>
+              <div class="type">
+                <p><strong>Type</strong></p>
+                <p id="type3">data type</p>
+              </div>
+            </div>
+            <div class="address">
+              <p><strong>Address</strong></p>
+              <p id="address3">data address</p>
+            </div>
+          </div>
+
+          <div class="cards-webgis">
+            <div class="card">
+              <h2>Titik 3</h2>
+              <div class="temperature">
+                <div class="block-title">Pemantauan Suhu</div>
+                <div class="value" id="suhu-titik3"></div>
+              </div>
+              <div class="humidity">
+                <div class="block-title">Pemantauan Kelembaban</div>
+                <div class="value" id="kelembaban-titik3"></div>
+              </div>
+            </div>
+
+            <div class="graphic-card">
+              <h2>Grafik Suhu Titik 3</h2>
+              <iframe
+                width="450"
+                height="260"
+                style="border: 1px solid #cccccc"
+                src="https://thingspeak.com/channels/2790380/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+              ></iframe>
+            </div>
+            <div class="graphic-card">
+              <h2>Grafik Kelembaban Titik 3</h2>
+              <iframe
+                width="450"
+                height="260"
+                style="border: 1px solid #cccccc"
+                src="https://thingspeak.com/channels/2790380/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"
+              ></iframe>
+            </div>
           </div>
         </section>
       </main>
     </div>
 
+    <script src="https://cdn.logwork.com/widget/text.js"></script>
     <script src="script.js"></script>
+    <script>
+      alert("Harap tunggu 10 detik agar data suhu muncul");
+    </script>
   </body>
 </html>

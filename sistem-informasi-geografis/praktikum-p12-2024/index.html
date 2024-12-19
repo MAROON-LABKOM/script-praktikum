@@ -80,47 +80,53 @@
           <div class="monitoring-cards">
             <div class="card">
               <img
-                src="/images/image1.png"
+                src="images/image1.png"
                 alt="ESP32"
                 class="stasiun-thumbnail"
               />
-              <h3>Titik 1: SP-Cikeas</h3>
+              <h3>Titik 1: <span id="residental1"></span></h3>
               <div class="point-contents">
                 <div class="point-coordinate">
-                  <p>Latitide: -6.3287424</p>
-                  <p>Longitude: 106.4237842</p>
+                  <p>Latitide: <span id="lat1"></span></p>
+                  <p>Longitude: <span id="long1"></span></p>
                 </div>
-                <a class="gotomaps" href="#" id="go-to-maps1">🗺️</a>
+                <a class="gotomaps" target="_blank" href="#" id="go-to-maps1"
+                  >🗺️</a
+                >
               </div>
             </div>
             <div class="card">
               <img
-                src="/images/image2.png"
+                src="images/image2.png"
                 alt="ESP32"
                 class="stasiun-thumbnail"
               />
-              <h3>Titik 2: SP-Cikuas</h3>
+              <h3>Titik 2: <span id="residental2"></span></h3>
               <div class="point-contents">
                 <div class="point-coordinate">
-                  <p>Latitide: -6.3287424</p>
-                  <p>Longitude: 106.4237842</p>
+                  <p>Latitide: <span id="lat2"></span></p>
+                  <p>Longitude: <span id="long2"></span></p>
                 </div>
-                <a class="gotomaps" href="#" id="go-to-maps1">🗺️</a>
+                <a class="gotomaps" target="_blank" href="#" id="go-to-maps2"
+                  >🗺️</a
+                >
               </div>
             </div>
             <div class="card">
               <img
-                src="/images/image3.png"
+                src="images/image3.png"
                 alt="ESP32"
                 class="stasiun-thumbnail"
               />
-              <h3>Titik 3: SP-Cikaos</h3>
+              <h3>Titik 3: <span id="residental3"></span></h3>
               <div class="point-contents">
                 <div class="point-coordinate">
-                  <p>Latitide: -6.3287424</p>
-                  <p>Longitude: 106.4237842</p>
+                  <p>Latitide: <span id="lat3"></span></p>
+                  <p>Longitude: <span id="long3"></span></p>
                 </div>
-                <a class="gotomaps" href="#" id="go-to-maps1">🗺️</a>
+                <a class="gotomaps" target="_blank" href="#" id="go-to-maps3"
+                  >🗺️</a
+                >
               </div>
             </div>
           </div>
@@ -156,7 +162,7 @@
                 <a
                   class="hub-button"
                   target="_blank"
-                  href="mailto:email@example.com?subject=Tanya%20Stasium%20Pemantauan&body=Halo%20saya%20<Nama%20Anda>,%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20<deskripsikan%20pertanyaan%20anda>"
+                  href="mailto:rektorat@unpak.ac.id?subject=Tanya%20Stasium%20Pemantauan&body=Halo%20saya%20<Nama%20Anda>,%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20<deskripsikan%20pertanyaan%20anda>"
                   >Hubungi via Email</a
                 >
                 <br />
@@ -178,6 +184,86 @@
         </footer>
       </main>
     </div>
-    <script src="script.js"></script>
+    <script>
+      function fetchData() {
+        var apiUrl =
+          "https://api.thingspeak.com/channels/2787496/feeds/last.json?timezone=Asia%2FJakarta&api_key=ZZS5RP2LDSXXWPLN";
+
+        fetch(apiUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            fetch(
+              `https://nominatim.openstreetmap.org/reverse?lat=${data.field1}&lon=${data.field2}&format=json`
+            )
+              .then((response) => response.json())
+              .then((dataLoc) => {
+                document.getElementById("residental1").innerText =
+                  dataLoc.address.road;
+                document.getElementById("lat1").innerText = dataLoc.lat;
+                document.getElementById("long1").innerText = dataLoc.lon;
+                document.getElementById(
+                  "go-to-maps1"
+                ).href = `https://www.google.com/maps?q=${dataLoc.lat},${dataLoc.lon}`;
+              });
+          })
+          .catch((error) => console.error("Error fetching data:", error));
+
+        var apiUrl2 =
+          "https://api.thingspeak.com/channels/2789709/feeds/last.json?timezone=Asia%2FJakarta&api_key=8141S2J55Y1XNT5G";
+
+        fetch(apiUrl2)
+          .then((response2) => response2.json())
+          .then((data2) => {
+            fetch(
+              `https://nominatim.openstreetmap.org/reverse?lat=${data2.field1}&lon=${data2.field2}&format=json`
+            )
+              .then((response2) => response2.json())
+              .then((dataLoc2) => {
+                document.getElementById("residental2").innerText =
+                  dataLoc2.address.road;
+                document.getElementById("lat2").innerText = dataLoc2.lat;
+                document.getElementById("long2").innerText = dataLoc2.lon;
+                document.getElementById(
+                  "go-to-maps2"
+                ).href = `https://www.google.com/maps?q=${dataLoc2.lat},${dataLoc2.lon}`;
+              });
+          })
+          .catch((error) => console.error("Error fetching data:", error));
+
+        var apiUrl3 =
+          "https://api.thingspeak.com/channels/2790380/feeds/last.json?timezone=Asia%2FJakarta&api_key=MV0HEWPA894CJ5P3";
+
+        fetch(apiUrl3)
+          .then((response3) => response3.json())
+          .then((data3) => {
+            fetch(
+              `https://nominatim.openstreetmap.org/reverse?lat=${data3.field1}&lon=${data3.field2}&format=json`
+            )
+              .then((response2) => response2.json())
+              .then((dataLoc3) => {
+                document.getElementById("residental3").innerText =
+                  dataLoc3.address.road;
+                document.getElementById("lat3").innerText = dataLoc3.lat;
+                document.getElementById("long3").innerText = dataLoc3.lon;
+                document.getElementById(
+                  "go-to-maps3"
+                ).href = `https://www.google.com/maps?q=${dataLoc3.lat},${dataLoc3.lon}`;
+              });
+          })
+          .catch((error) => console.error("Error fetching data:", error));
+      }
+
+      fetchData();
+
+      const sidebar = document.getElementById("sidebar");
+      const toggleBtn = document.getElementById("toggle-btn");
+      sidebar.classList.toggle("collapsed");
+      document.querySelector("main").classList.toggle("collapsed");
+
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("collapsed");
+        document.querySelector("main").classList.toggle("collapsed");
+      });
+    </script>
   </body>
 </html>

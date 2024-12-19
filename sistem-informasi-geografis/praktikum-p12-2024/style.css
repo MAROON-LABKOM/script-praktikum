@@ -36,7 +36,7 @@ body {
 
 #sidebar ul li a {
     text-decoration: none;
-    color: white;
+    color: white !important;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -257,12 +257,13 @@ main.collapsed {
 
 .monitoring-cards {
     display: flex;
-    align-items: center;
+    align-items: start;
+    height: fit-content;
     gap: 20px;
 }
 
 .stasiun-thumbnail {
-    width: 295px;
+    width: 100%;
     height: 200px;
     margin-right: auto;
     object-fit: cover;
@@ -422,40 +423,171 @@ footer p {
 }
 
 .statitics {
-    background: #fff;
-    border-top: 1px solid #ddd;
-    overflow: hidden;
+    background: #fff url('https://media.giphy.com/media/dYtHPYJxZblCcWPwcQ/giphy.gif?cid=790b76116a3bcndoo3y4791uilamas77psbp6ci2o4zje87s&ep=v1_gifs_search&rid=giphy.gif&ct=g') no-repeat center center;
+    background-size: cover;
+    overflow: scroll;
     transition: all 0.3s ease;
     display: block;
     height: auto;
-    padding-inline: 30px;
-    border-radius: 10px 10px 0px 0px;
+    padding-inline: 10px 10px;
 }
 
 .statitics.collapsed {
-    background-color: #868686;
+    background-color: #e5e5e5;
+    border-top: 5px solid #000;
     height: 100px;
+    overflow: hidden;
 }
 
 .statitics.collapsed #toggle-statistics {
     background-color: #000;
 }
 
+.statitics.collapsed #toggle-statistics::before {
+    content: "Lihat Statistik";
+}
+
 .cards-webgis {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.cards-webgis:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+
+.cards-webgis .graphic-card {
+    width: 40%;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 10px;
+}
+
+.cards-webgis .graphic-card h2 {
+    font-weight: 800;
+    background-color: #007bff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    margin: 0;
+}
+
+.cards-webgis .graphic-card iframe {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .cards-webgis .card {
+    width: 20%;
     background: #007bff;
     color: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
+
+.cards-webgis .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cards-webgis .card h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.cards-webgis .temperature,
+.cards-webgis .humidity {
+    margin-top: 10px;
+}
+
+.cards-webgis .block-title {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.cards-webgis .value {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #f4f4f4;
+}
+
+.cards-webgis .card .temperature,
+.cards-webgis .card .humidity {
+    border-top: 1px solid #ffffff;
+    padding-top: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.cards-webgis .card .value {
+    font-size: 2rem;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .cards-webgis {
+        position: relative;
+        flex-direction: column;
+    }
+
+    .cards-webgis .graphic-card {
+        width: auto;
+    }
+
+    .cards-webgis .card {
+        display: flex;
+        position: relative;
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+        align-items: start;
+        width: fit-content;
+    }
+
+    .cards-webgis .card h2 {
+        text-align: center;
+        width: 100%;
+    }
+
+    .monitoring-cards .card {
+        width: auto;
+    }
+
+    .point-contents {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .gotomaps::after {
+        width: auto;
+        content: "Go to Maps";
+    }
+
+    .gotomaps {
+        text-decoration: none;
+        font-weight: 800;
+        color: #000;
+    }
+
+    .monitoring-cards,
+    .location-content {
+        flex-direction: column;
+    }
+
+    .map-container,
+    .contact-info {
+        width: fit-content;
+    }
+}
+
 
 .toggle-statistic-section {
     margin-top: 10px;
@@ -471,9 +603,12 @@ footer p {
     border-radius: 5px;
     padding: 10px 15px;
     cursor: pointer;
-    margin: 10px 0;
     font-size: 14px;
     transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#toggle-statistics::before {
+    content: "Tutup Statistik";
 }
 
 #toggle-statistics:hover {
@@ -487,7 +622,7 @@ footer p {
 
 /* Styling untuk Section About Us */
 
-.about-container{
+.about-container {
     display: flex;
     min-height: 100vh;
     background-color: #e5e5e5;
@@ -550,4 +685,73 @@ footer p {
 .profile li p {
     font-size: 1rem;
     color: #555;
+}
+
+.custom-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.location-monitor {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    color: white;
+    align-items: start;
+    justify-content: space-around;
+    border-radius: 10px;
+    gap: 10px;
+    padding: 10px;
+}
+
+.location-monitor .coordinate {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.location-monitor .type {
+    text-align: right;
+    margin-right: 10px;
+}
+
+.gatau {
+    display: flex;
+    background-color: white;
+    color: #000;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding-block: 10px;
+    border-radius: 10px;
+}
+
+.location-monitor p {
+    margin: 0;
+}
+
+.coordinate h4 {
+    margin: 0;
+}
+
+.coordinate {
+    margin: 0;
+}
+
+.clock iframe {
+    border-radius: 10px;
+}
+
+.clock {
+    display: flex;
+    width: auto;
+    margin-top: 5px;
+    justify-content: center;
+    padding-inline: 10px;
+    background-color: white;
+    border-radius: 10px;
 }

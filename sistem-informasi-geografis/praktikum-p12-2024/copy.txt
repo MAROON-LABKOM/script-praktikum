@@ -1,0 +1,71 @@
+var suhu_dht22_titik1 = "";
+var suhu_dht22_titik2 = "";
+var suhu_dht22_titik3 = "";
+
+var kelembaban_dht22_titik1 = "...";
+var kelembaban_dht22_titik2 = "...";
+var kelembaban_dht22_titik3 = "...";
+
+function fetchData() {
+  var apiUrl =
+    "https://api.thingspeak.com/channels/2787496/feeds/last.json?timezone=Asia%2FJakarta&api_key=ZZS5RP2LDSXXWPLN";
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Response JSON:", data);
+
+      suhu_dht22_titik1 = parseFloat(data.field4).toFixed(2);
+      kelembaban_dht22_titik1 = parseFloat(data.field3).toFixed(2);
+
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+
+    var apiUrl2 =
+    "https://api.thingspeak.com/channels/2789709/feeds/last.json?timezone=Asia%2FJakarta&api_key=8141S2J55Y1XNT5G";
+
+  fetch(apiUrl2)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Response JSON:", data);
+
+      suhu_dht22_titik2 = parseFloat(data.field4).toFixed(2);
+      kelembaban_dht22_titik2 = parseFloat(data.field3).toFixed(2);
+
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+
+  var apiUrl3 =
+    "https://api.thingspeak.com/channels/2790380/feeds/last.json?timezone=Asia%2FJakarta&api_key=MV0HEWPA894CJ5P3";
+
+  fetch(apiUrl3)
+    .then((response2) => response2.json())
+    .then((data2) => {
+      console.log("Response JSON:", data2);
+
+      suhu_dht22_titik3 = parseFloat(data2.field4).toFixed(2);
+      kelembaban_dht22_titik3 = parseFloat(data2.field3).toFixed(2);
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+}
+
+setInterval(fetchData, 5000);
+
+function updateGeoJSON() {
+  json_RadiusTitikSuhu_3.features[0].properties.Suhu = suhu_dht22_titik1;
+  json_RadiusTitikSuhu_3.features[1].properties.Suhu = suhu_dht22_titik2;
+  json_RadiusTitikSuhu_3.features[2].properties.Suhu = suhu_dht22_titik3;
+
+  json_RadiusTitikSuhu_3.features[0].properties.Kelembaban = kelembaban_dht22_titik1;
+  json_RadiusTitikSuhu_3.features[1].properties.Kelembaban = kelembaban_dht22_titik2;
+  json_RadiusTitikSuhu_3.features[2].properties.Kelembaban = kelembaban_dht22_titik3;
+}
+
+function logJson() {
+  updateGeoJSON();
+  console.log("===============d=================");
+  console.log(json_RadiusTitikSuhu_3.features[0].properties.Suhu);
+  console.log("===========================a=====");
+}
+
+setInterval(logJson, 5000);
